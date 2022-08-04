@@ -7,4 +7,5 @@ import models.Client;
  */
 public interface ICommon <T>{
     void saveDonnee(T objet);
+    void selectDonnee(T objet);
 }

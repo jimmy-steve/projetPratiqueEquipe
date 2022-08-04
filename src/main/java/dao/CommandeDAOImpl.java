@@ -3,7 +3,9 @@ package dao;
 import bd.Bd;
 import models.Commande;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CommandeDAOImpl implements ICommandeDAO{
@@ -11,6 +13,7 @@ public class CommandeDAOImpl implements ICommandeDAO{
     private String url;
     private String username;
     private String password;
+    private static Connection connection = null;
 
     public void insererCommande(Commande commande){
         try {
@@ -25,6 +28,26 @@ public class CommandeDAOImpl implements ICommandeDAO{
         }
 
 
+    }
+    public static void selectQuestion1(Commande commande ) throws SQLException {
+        try {
+            System.out.println("- Voici le résultat de la question 1 ! modifié avec 3 au lieu de 5  \n");
+            String query = "select no_commande, date_commande\n" +
+                    "from commande\n" +
+                    "where no_client = 10\n" +
+                    "and no_commande > 3;";
+
+            PreparedStatement pr = connection.prepareStatement(query);
+            ResultSet resultSet = pr.executeQuery();
+            while (resultSet.next()) {
+                int noCommande = resultSet.getInt(1);
+                String dateCommande = resultSet.getString(2);
+                System.out.printf("Numéro de commande :%d, \nLa date de la commande : %s\n", noCommande, dateCommande);
+            }
+            pr.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
