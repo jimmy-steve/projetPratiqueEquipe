@@ -9,7 +9,7 @@ import java.sql.*;
  * @author Francis Lafontaine
  * @since 04/aout/2022
  */
-public class ArticleDAO implements ICommon{
+public class ArticleDAO implements ICommon {
     private String url;
     private String username;
     private String password;
@@ -17,6 +17,7 @@ public class ArticleDAO implements ICommon{
 
     /**
      * Constructeur avec paramètre pour créer une connection
+     *
      * @param url
      * @param username
      * @param password
@@ -29,6 +30,7 @@ public class ArticleDAO implements ICommon{
 
     /**
      * Permet de préparer la requête pour insérer un article
+     *
      * @param article
      */
     private void insererArticle(Article article) {
@@ -37,10 +39,10 @@ public class ArticleDAO implements ICommon{
             String query = "INSERT INTO article (no_article, description, prix_unitaire, quantite_en_stock) values (?, ?, ?, ?)";
             PreparedStatement pr = connection.prepareStatement(query);
 
-            pr.setInt(1,article.getNoArticle());
-            pr.setString(2,article.getDescription());
-            pr.setDouble(3,article.getPrixUnitaire());
-            pr.setInt(4,article.getQuantite());
+            pr.setInt(1, article.getNoArticle());
+            pr.setString(2, article.getDescription());
+            pr.setDouble(3, article.getPrixUnitaire());
+            pr.setInt(4, article.getQuantite());
             pr.executeUpdate();
             pr.close();
         } catch (SQLException e) {
@@ -50,11 +52,13 @@ public class ArticleDAO implements ICommon{
 
     /**
      * Permet de Préparer la requête qui va répondre à la question 3
+     * 3. Les Articles dont la description débute par la lettre « C ».
+     *
      * @param article
      */
     private void selectQuestion3(Article article) {
         try {
-            System.out.println("- Voici le résultat de la question 3 ! La description commence par C  \n");
+            System.out.println("\n- Voici le résultat de la question 3 ! La description commence par C  \n");
             String query = "select no_article, description, prix_unitaire, quantite_en_stock from article \n" +
                     "where description like upper('C%');";
 
@@ -75,7 +79,35 @@ public class ArticleDAO implements ICommon{
     }
 
     /**
+     * Permet de Préparer la requête qui va répondre à la question 4
+     * 4. Les Articles dont le prix est supérieur à la moyenne.
+     * @param objet
+     */
+    private void selectQuestion4(Article objet) {
+        try {
+            System.out.println("\n- Voici le résultat de la question 4 ! Les Produit ayant le prix supérieur de la moyenne  \n");
+            String query = "select no_article, description, prix_unitaire, quantite_en_stock\n" +
+                    "        from article\n" +
+                    "        where prix_unitaire > (select avg(prix_unitaire) from article);";
+
+            PreparedStatement pr = connection.prepareStatement(query);
+            ResultSet resultSet = pr.executeQuery();
+            while (resultSet.next()) {
+                int noArticle = resultSet.getInt(1);
+                String description = resultSet.getString(2);
+                int prixUnitaire = resultSet.getInt(3);
+                int quantite = resultSet.getInt(4);
+                System.out.printf("\nNuméro de l'article :%d \nLa Description : %s\nLe prix unitaire : %d\nLa quantité : %s\n", noArticle, description, prixUnitaire, quantite);
+            }
+            pr.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Permet de Sauvegardé les donnée d'un article
+     *
      * @param objet qui est caster en Article
      */
     @Override
@@ -91,6 +123,7 @@ public class ArticleDAO implements ICommon{
 
     /**
      * Permet de faire une requête dans la base donnée qui permet de répondre à la question 3
+     *
      * @param objet
      */
     @Override
@@ -101,6 +134,26 @@ public class ArticleDAO implements ICommon{
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Permet de faire une requête dans la base donnée qui permet de répondre à la question 4
+     * on ajoute un compteur pour permettre le passe d'un paramètre qui nous redirigeration par la suite
+     *
+     * @param objet qui sera caster en article
+     * @param i un compteur
+     */
+    @Override
+    public void selectDonnee(Object objet, int i) {
+        if (i == 4) {
+            try {
+                connection = DriverManager.getConnection(url, username, password);
+                selectQuestion4((Article) objet);
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
