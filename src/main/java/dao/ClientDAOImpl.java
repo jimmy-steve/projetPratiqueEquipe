@@ -1,14 +1,17 @@
 package dao;
 
-import bd.Bd;
 import models.Client;
 
 import java.sql.*;
-
-public class ClientDAOImpl implements IClientDao {
+/**
+ * @author Francis Lafontaine
+ * @since 04/aout/2022
+ */
+public class ClientDAOImpl implements ICommon {
     private String url;
     private String username;
     private String password;
+    private static Connection connection = null;
 
     public ClientDAOImpl(String url, String username, String password) {
         this.url = url;
@@ -18,19 +21,21 @@ public class ClientDAOImpl implements IClientDao {
 
     public static void insererClient(Client client ) throws SQLException {
         System.out.println("Insertion effectuée...");
-        String query = "INSERT INTO client (no_client, nom_client, no_telephone) values (" + client.getNoClient()
-                + ", '" + client.getNomClient() + "', '" + client.getNoTelephone() + "');";
-        Bd.prepareStatement = Bd.connection.prepareStatement(query);
-        Bd.prepareStatement.executeUpdate(query);
+        String query = "INSERT INTO client (no_client, nom_client, no_telephone) values (?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1,client.getNoClient());
+        statement.setString(2,client.getNomClient());
+        statement.setString(3,client.getNoTelephone());
+        statement.executeUpdate();
+        statement.close();
     }
 
     @Override
-    public void saveClient(Client client) {
+    public void saveDonnee(Object objet) {
         try {
-
-            Bd.seConnecter();
-            insererClient(client);
-            Bd.seDeconnecter();
+            connection = DriverManager.getConnection(url, username, password);
+            insererClient((Client) objet);
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

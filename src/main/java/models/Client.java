@@ -1,5 +1,9 @@
 package models;
 
+/**
+ * @author Francis Lafontaine
+ * @since 04/aout/2022
+ */
 public class Client {
     private int noClient;
     private String nomClient;
