@@ -12,7 +12,7 @@ public class Application {
 
         String url = "jdbc:mysql://localhost:3306/vente";
         String username = "root";
-        String password = "Lareaultlaval7";
+        String password = "MotdePasse";
 
         //-----------------------------------------------------------------ajout d'un client
 
