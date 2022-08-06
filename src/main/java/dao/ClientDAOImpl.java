@@ -79,23 +79,19 @@ public class ClientDAOImpl implements ICommon {
      */
     public static void selectQuestion6(Client client ) throws SQLException {
         try {
-            System.out.println("\n- Voici le résultat de la question 6 ! Les client sans aucune commande  \n");
-            /**
-             * A corriger c'est toute les autre client sauf eux
-             */
-            // TODO: 2022-08-04 --------------------------------------------------------requete sql à modifier
-            String query = "SELECT distinct(c.no_client), c.no_telephone \n" +
-                    "FROM client c JOIN commande l ON (c.no_client = l.no_client)\n" +
-                    "WHERE c.no_client IN (\n" +
-                    "10,20,30,40\n" +
-                    ");";
+            System.out.println("- Voici le résultat de la question 6 ! Les client sans aucune commande  \n");
+            String query = "SELECT c1.no_client, c1.no_telephone\n" +
+                    "FROM Client C1\n" +
+                    "WHERE NOT EXISTS (SELECT *\n" +
+                    "FROM Commande C2\n" +
+                    "WHERE C1.no_client=C2.no_client);";
 
             PreparedStatement pr = connection.prepareStatement(query);
             ResultSet resultSet = pr.executeQuery();
             while (resultSet.next()) {
                 int noClient = resultSet.getInt(1);
                 String noTelephone = resultSet.getString(2);
-                System.out.printf("\nNuméro du client :%d, \nLe numéro de téléphone : %s\n", noClient, noTelephone);
+                System.out.printf("\nNuméro du client :%d \nLe numéro de téléphone : %s\n", noClient, noTelephone);
             }
             pr.close();
         } catch (SQLException e) {
