@@ -10,23 +10,30 @@ import java.sql.*;
  * @since 04/aout/2022
  */
 public class ArticleDAO implements ICommon {
-    private String url;
-    private String username;
-    private String password;
-    private static Connection connection = null;
 
-    /**
-     * Constructeur avec paramètre pour créer une connection
-     *
-     * @param url
-     * @param username
-     * @param password
-     */
-    public ArticleDAO(String url, String username, String password) {
-        this.url = url;
-        this.username = username;
-        this.password = password;
+    private static Connection connection;
+
+    public ArticleDAO(Connection connection) {
+        this.connection = connection;
     }
+
+//    private String url;
+//    private String username;
+//    private String password;
+//    private static Connection connection = null;
+//
+//    /**
+//     * Constructeur avec paramètre pour créer une connection
+//     *
+//     * @param url
+//     * @param username
+//     * @param password
+//     */
+//    public ArticleDAO(String url, String username, String password) {
+//        this.url = url;
+//        this.username = username;
+//        this.password = password;
+//    }
 
     /**
      * Permet de préparer la requête pour insérer un article
@@ -69,7 +76,7 @@ public class ArticleDAO implements ICommon {
                 String description = resultSet.getString(2);
                 int prixUnitaire = resultSet.getInt(3);
                 int quantite = resultSet.getInt(4);
-                System.out.printf("\nNuméro de l'article :%d, \nLa Description : %s\nLe prix unitaire : %d\nLa quantité : %s\n", noArticle, description, prixUnitaire, quantite);
+                System.out.printf("\nNuméro de l'article :%d \nLa Description : %s\nLe prix unitaire : %d\nLa quantité : %s\n", noArticle, description, prixUnitaire, quantite);
             }
             pr.close();
         } catch (SQLException e) {
@@ -112,13 +119,7 @@ public class ArticleDAO implements ICommon {
      */
     @Override
     public void saveDonnee(Object objet) {
-        try {
-            connection = DriverManager.getConnection(url, username, password);
-            insererArticle((Article) objet);
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        insererArticle((Article) objet);
     }
 
     /**
@@ -128,13 +129,7 @@ public class ArticleDAO implements ICommon {
      */
     @Override
     public void selectDonnee(Object objet) {
-        try {
-            connection = DriverManager.getConnection(url, username, password);
             selectQuestion3((Article) objet);
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -147,13 +142,7 @@ public class ArticleDAO implements ICommon {
     @Override
     public void selectDonnee(Object objet, int i) {
         if (i == 4) {
-            try {
-                connection = DriverManager.getConnection(url, username, password);
                 selectQuestion4((Article) objet);
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

@@ -1,34 +1,57 @@
+import bd.DbCon;
 import dao.ArticleDAO;
 import dao.ClientDAOImpl;
 import dao.CommandeDAO;
 import dao.ICommon;
 import models.*;
 
+import java.sql.SQLException;
+
 public class Application {
     public static void main(String[] args) {
-        //----------------------------------------------------------------variable de connexion
-        String url = "jdbc:mysql://localhost:3306/vente";
-        String username = "root";
-        String password = "Lareaultlaval7";
-
         //-----------------------------------------------------------------ajout d'un client
 
-//        Client client = new Client(108,"Michel Mambara10", ("(450)582-2459"));
-//        ICommon iClientDao = new ClientDAOImpl(url, username, password);
-//        iClientDao.saveDonnee(client);
-//        System.out.println(client);
+//        ICommon iClientDao = null;
+//        try {
+//            Client client = new Client(108,"Michel Mambara10", ("(450)582-2459"));
+//            iClientDao = new ClientDAOImpl(DbCon.getConnection());
+//            iClientDao.saveDonnee(client);
+//            System.out.println(client);
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
 
         //------------------------------------------------------------------ajout d'un article
-//        Article article = new Article(72, "allelluriaaaaaaa", 50.99, 25);
-//        ICommon iArticleDAO = new ArticleDAO(url, username, password);
-//        iArticleDAO.saveDonnee(article);
-//        System.out.println(article);
+
+//        ICommon iArticleDAO = null;
+//        try {
+//            Article article = new Article(72, "allelluriaaaaaaa", 50.99, 25);
+//            iArticleDAO = new ArticleDAO(DbCon.getConnection());
+//            iArticleDAO.saveDonnee(article);
+//            System.out.println(article);
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
 
         //-----------------------------------------------------------------------------ajout d'une commande
-//        Commande commande = new Commande(10, "2001-01-01", 40);
-//        ICommon iCommandeDao = new CommandeDAO(url, username, password);
-//        iCommandeDao.saveDonnee(commande);
-//        System.out.println(commande);
+
+//        ICommon iCommandeDao = null;
+//        try {
+//            Commande commande = new Commande(10, "2001-01-01", 40);
+//            iCommandeDao = new CommandeDAO(DbCon.getConnection());
+//            iCommandeDao.saveDonnee(commande);
+//            System.out.println(commande);
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
         //-------------------------------------------------------------------------ajout d'une ligne de commande
 //        LigneCommande ligneCommande = new LigneCommande(10, 20, 40);
@@ -56,38 +79,91 @@ public class Application {
         int cpt = 0;
         //-----------------------------------------------------------------------Question1
         cpt = 1;
-        Commande commandeQ1 = new Commande();
-        ICommon iCommandDaoQ1 = new CommandeDAO(url, username, password);
-        iCommandDaoQ1.selectDonnee(commandeQ1);
+        ICommon iCommandDaoQ1 = null;
+        try {
+            Commande commandeQ1 = new Commande();
+            iCommandDaoQ1 = new CommandeDAO(DbCon.getConnection());
+            iCommandDaoQ1.selectDonnee(commandeQ1);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         //-----------------------------------------------------------------------Question2
         cpt = 2;
-        Client clientQ2 = new Client();
-        ICommon iClientDaoQ2 = new ClientDAOImpl(url, username, password);
-        iClientDaoQ2.selectDonnee(clientQ2);
-
+        ICommon iClientDaoQ2 = null;
+        try {
+            Client clientQ2 = new Client();
+            iClientDaoQ2 = new ClientDAOImpl(DbCon.getConnection());
+            iClientDaoQ2.selectDonnee(clientQ2);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         //-----------------------------------------------------------------------Question3
         cpt = 3;
-        Article articleQ3 = new Article();
-        ICommon iArticleDaoQ3 = new ArticleDAO(url, username, password);
-        iArticleDaoQ3.selectDonnee(articleQ3);
+        ICommon iArticleDaoQ3 = null;
+        try {
+            Article articleQ3 = new Article();
+            iArticleDaoQ3 = new ArticleDAO(DbCon.getConnection());
+            iArticleDaoQ3.selectDonnee(articleQ3);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         //-----------------------------------------------------------------------Question4
         cpt = 4;
-        Article articleQ4 = new Article();
-        ICommon iArticleDaoQ4 = new ArticleDAO(url, username, password);
-        iArticleDaoQ4.selectDonnee(articleQ4, cpt);
+        ICommon iArticleDaoQ4 = null;
+        try {
+            Article articleQ4 = new Article();
+            iArticleDaoQ4 = new ArticleDAO(DbCon.getConnection());
+            iArticleDaoQ4.selectDonnee(articleQ4, cpt);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         //-----------------------------------------------------------------------Question5
         cpt= 5;
-        Commande commandeQ5 = new Commande();
-        ICommon iCommandDaoQ5 = new CommandeDAO(url, username, password);
-        iCommandDaoQ5.selectDonnee(commandeQ5, cpt);
+
+        ICommon iCommandDaoQ5 = null;
+        try {
+            Commande commandeQ5 = new Commande();
+            iCommandDaoQ5 = new CommandeDAO(DbCon.getConnection());
+            iCommandDaoQ5.selectDonnee(commandeQ5, cpt);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         //-----------------------------------------------------------------------Question6
         cpt= 6;
-        Client clientQ6 = new Client();
-        ICommon iClientDaoQ6 = new ClientDAOImpl(url, username, password);
-        iClientDaoQ6.selectDonnee(clientQ6, cpt);
+
+        ICommon iClientDaoQ6 = null;
+        try {
+            iClientDaoQ6 = new ClientDAOImpl(DbCon.getConnection());
+            Client clientQ6 = new Client();
+            iClientDaoQ6.selectDonnee(clientQ6, cpt);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        //-----------------------------------------------------------------------Déconnexion
+        try {
+            DbCon.seDeconnecter();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

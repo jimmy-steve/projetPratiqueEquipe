@@ -11,23 +11,30 @@ import java.sql.*;
  * @since 04/aout/2022
  */
 public class CommandeDAO implements ICommon {
-    private String url;
-    private String username;
-    private String password;
-    private static Connection connection = null;
 
-    /**
-     * Constructeur avec paramètre pour faire la connection
-     *
-     * @param url
-     * @param username
-     * @param password
-     */
-    public CommandeDAO(String url, String username, String password) {
-        this.url = url;
-        this.username = username;
-        this.password = password;
+    private static Connection connection;
+
+    public CommandeDAO(Connection connection) {
+        this.connection = connection;
     }
+
+//    private String url;
+//    private String username;
+//    private String password;
+//    private static Connection connection = null;
+//
+//    /**
+//     * Constructeur avec paramètre pour faire la connection
+//     *
+//     * @param url
+//     * @param username
+//     * @param password
+//     */
+//    public CommandeDAO(String url, String username, String password) {
+//        this.url = url;
+//        this.username = username;
+//        this.password = password;
+//    }
 
     /**
      * Permet d'insérer un enregistrement dans la BD d'une commande
@@ -60,7 +67,7 @@ public class CommandeDAO implements ICommon {
      */
     public static void selectQuestion1(Commande commande) throws SQLException {
         try {
-            System.out.println("\n- Voici le résultat de la question 1 ! modifié avec 3 au lieu de 5 Pour avoir de résultat \n");
+            System.out.println("\n- Voici le résultat de la question 1 ! modifié avec 3 au lieu de 5  \n");
             String query = "select no_commande, date_commande\n" +
                     "from commande\n" +
                     "where no_client = 10\n" +
@@ -71,7 +78,7 @@ public class CommandeDAO implements ICommon {
             while (resultSet.next()) {
                 int noCommande = resultSet.getInt(1);
                 String dateCommande = resultSet.getString(2);
-                System.out.printf("Numéro de commande :%d, \nLa date de la commande : %s\n", noCommande, dateCommande);
+                System.out.printf("\nNuméro de commande :%d \nLa date de la commande : %s\n", noCommande, dateCommande);
             }
             pr.close();
         } catch (SQLException e) {
@@ -89,7 +96,7 @@ public class CommandeDAO implements ICommon {
      */
     public static void selectQuestion5(Commande commande) throws SQLException {
         try {
-            System.out.println("\n Voici le résultat de la question 5 ! La liste des noCommande avec noLivraison  ");
+            System.out.println("\n- Voici le résultat de la question 5 ! La liste des noCommande avec noLivraison \n ");
             String query = "select c.no_commande,liv.no_livraison\n" +
                     "from commande c JOIN ligne_commande l ON (c.no_commande = l.no_commande)\n" +
                     "\t\t\t\tJOIN detail_livraison d ON (l.no_commande = d.no_commande)\n" +
@@ -117,9 +124,7 @@ public class CommandeDAO implements ICommon {
     @Override
     public void saveDonnee(Object objet) {
         try {
-            connection = DriverManager.getConnection(url, username, password);
             insererCommande((Commande) objet);
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -133,9 +138,7 @@ public class CommandeDAO implements ICommon {
     @Override
     public void selectDonnee(Object objet) {
         try {
-            connection = DriverManager.getConnection(url, username, password);
             selectQuestion1((Commande) objet);
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -145,9 +148,7 @@ public class CommandeDAO implements ICommon {
     public void selectDonnee(Object objet, int i) {
         if (i == 5) {
             try {
-                connection = DriverManager.getConnection(url, username, password);
                 selectQuestion5((Commande) objet);
-                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
