@@ -9,9 +9,19 @@ public class Article {
     private double prixUnitaire;
     private int quantite;
 
+    /**
+     * Constructeur d'article par vide
+     */
     public Article() {
     }
 
+    /**
+     * Constructeur d'article avec paramètre
+     * @param noArticle
+     * @param description
+     * @param prixUnitaire
+     * @param quantite
+     */
     public Article(int noArticle, String description, double prixUnitaire, int quantite) {
         this.noArticle = noArticle;
         this.description = description;
@@ -51,6 +61,10 @@ public class Article {
         this.quantite = quantite;
     }
 
+    /**
+     * To String d'un article
+     * @return
+     */
     @Override
     public String toString() {
         return "Article{" +

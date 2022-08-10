@@ -10,31 +10,14 @@ import java.sql.*;
  * @since 04/aout/2022
  */
 public class ArticleDAO implements ICommon {
-
     private static Connection connection;
-
+    /**
+     * Constructeur avec paramètre avec une connection
+     * @param connection
+     */
     public ArticleDAO(Connection connection) {
         this.connection = connection;
     }
-
-//    private String url;
-//    private String username;
-//    private String password;
-//    private static Connection connection = null;
-//
-//    /**
-//     * Constructeur avec paramètre pour créer une connection
-//     *
-//     * @param url
-//     * @param username
-//     * @param password
-//     */
-//    public ArticleDAO(String url, String username, String password) {
-//        this.url = url;
-//        this.username = username;
-//        this.password = password;
-//    }
-
     /**
      * Permet de préparer la requête pour insérer un article
      *

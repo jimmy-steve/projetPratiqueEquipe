@@ -1,14 +1,25 @@
 package models;
 
+/**
+ * Classe POJO Ligne commande
+ */
 public class LigneCommande {
-
     private int noCommande;
     private int noArticle;
     private int quantite;
 
+    /**
+     * Constructeur vide pour ligne de commande
+     */
     public LigneCommande() {
     }
 
+    /**
+     * Constructeur avec paramètre de Ligne de commande
+     * @param noCommande
+     * @param noArticle
+     * @param quantite
+     */
     public LigneCommande(int noCommande, int noArticle, int quantite) {
         this.noCommande = noCommande;
         this.noArticle = noArticle;
@@ -39,6 +50,10 @@ public class LigneCommande {
         this.quantite = quantite;
     }
 
+    /**
+     * Le To String de Ligne de commande
+     * @return
+     */
     @Override
     public String toString() {
         return "LigneCommande{" +

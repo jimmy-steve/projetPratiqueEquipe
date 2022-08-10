@@ -9,9 +9,18 @@ public class Client {
     private String nomClient;
     private String noTelephone;
 
+    /**
+     * Constructeur vide pour client
+     */
     public Client() {
     }
 
+    /**
+     * constructeur avec paramèetre pour le client
+     * @param noClient
+     * @param nomClient
+     * @param noTelephone
+     */
     public Client(int noClient, String nomClient, String noTelephone) {
         this.noClient = noClient;
         this.nomClient = nomClient;
@@ -42,6 +51,10 @@ public class Client {
         this.noTelephone = noTelephone;
     }
 
+    /**
+     * Le toTsring pour le client
+     * @return
+     */
     @Override
     public String toString() {
         return "Client{" +

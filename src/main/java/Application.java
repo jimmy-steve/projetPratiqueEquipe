@@ -1,8 +1,5 @@
 import bd.DbCon;
-import dao.ArticleDAO;
-import dao.ClientDAOImpl;
-import dao.CommandeDAO;
-import dao.ICommon;
+import dao.*;
 import models.*;
 
 import java.sql.SQLException;
@@ -11,67 +8,86 @@ public class Application {
     public static void main(String[] args) {
         //-----------------------------------------------------------------ajout d'un client
 
-//        ICommon iClientDao = null;
-//        try {
-//            Client client = new Client(108,"Michel Mambara10", ("(450)582-2459"));
-//            iClientDao = new ClientDAOImpl(DbCon.getConnection());
-//            iClientDao.saveDonnee(client);
-//            System.out.println(client);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        ICommon iClientDao = null;
+        try {
+            Client client = new Client(90,"Michel Mambara", ("(450)582-2459"));
+            iClientDao = new ClientDAOImpl(DbCon.getConnection());
+            iClientDao.saveDonnee(client);
+            System.out.println(client);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
         //------------------------------------------------------------------ajout d'un article
 
-//        ICommon iArticleDAO = null;
-//        try {
-//            Article article = new Article(72, "allelluriaaaaaaa", 50.99, 25);
-//            iArticleDAO = new ArticleDAO(DbCon.getConnection());
-//            iArticleDAO.saveDonnee(article);
-//            System.out.println(article);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        ICommon iArticleDAO = null;
+        try {
+            Article article = new Article(100, "Vinagrier", 50.99, 25);
+            iArticleDAO = new ArticleDAO(DbCon.getConnection());
+            iArticleDAO.saveDonnee(article);
+            System.out.println(article);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
         //-----------------------------------------------------------------------------ajout d'une commande
+        ICommon iCommandeDao = null;
+        try{
+            Commande commande = new Commande(10, "2001-01-01", 40);
+            iCommandeDao = new CommandeDAO(DbCon.getConnection());
+            iCommandeDao.saveDonnee(commande);
+            System.out.println(commande);
 
-//        ICommon iCommandeDao = null;
-//        try {
-//            Commande commande = new Commande(10, "2001-01-01", 40);
-//            iCommandeDao = new CommandeDAO(DbCon.getConnection());
-//            iCommandeDao.saveDonnee(commande);
-//            System.out.println(commande);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         //-------------------------------------------------------------------------ajout d'une ligne de commande
-//        LigneCommande ligneCommande = new LigneCommande(10, 20, 40);
-//        ICommon iLigneCommandeDao = new LigneCommandeDAO(url, username, password);
-//        iLigneCommandeDao.saveDonnee(ligneCommande);
-//        System.out.println(ligneCommande);
+        ICommon iLigneCommandeDao =null;
+        try{
+            LigneCommande ligneCommande = new LigneCommande(10, 70, 12);
+            iLigneCommandeDao = new LigneCommandeDAO(DbCon.getConnection());
+            iLigneCommandeDao.saveDonnee(ligneCommande);
+            System.out.println(ligneCommande);
+
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         //--------------------------------------------------------------------------ajout d'une ligne de livraison
-//        Livraison livraison = new Livraison(107, "2001-07-07");
-//        ICommon iLivraisonDao = new LivraisonDAO(url, username, password);
-//        iLivraisonDao.saveDonnee(livraison);
-//        System.out.println(livraison);
+        ICommon iLivraisonDao =null;
+        try{
+            Livraison livraison = new Livraison(107, "2001-07-07");
+            iLivraisonDao = new LivraisonDAO(DbCon.getConnection());
+            iLivraisonDao.saveDonnee(livraison);
+            System.out.println(livraison);
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         //-----------------------------------------------------------------------ajout d'une ligne de detail livraison
-//        DetailLivraison detailLivraison = new DetailLivraison(107, 10, 20, 40);
-//
-//        ICommon iDetail_livraisonDao = new DetailLivraisonDAO(url, username, password);
-//        iDetail_livraisonDao.saveDonnee(detailLivraison);
-//        System.out.println(detailLivraison);
-
-
+        ICommon iDetailLivraisonDao =null;
+        try{
+            DetailLivraison detailLivraison = new DetailLivraison(107, 1, 10, 3);
+            iDetailLivraisonDao = new DetailLivraisonDAO(DbCon.getConnection());
+            iDetailLivraisonDao.saveDonnee(detailLivraison);
+            System.out.println(detailLivraison);
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         //-----------------------------------------------------------------------Select
         /**
          * Important pour compter les question et avoir la bonne sortie

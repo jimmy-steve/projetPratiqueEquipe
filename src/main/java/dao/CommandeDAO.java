@@ -11,31 +11,15 @@ import java.sql.*;
  * @since 04/aout/2022
  */
 public class CommandeDAO implements ICommon {
-
     private static Connection connection;
 
+    /**
+     * Constructeur avec une connection pour persister les données
+     * @param connection
+     */
     public CommandeDAO(Connection connection) {
         this.connection = connection;
     }
-
-//    private String url;
-//    private String username;
-//    private String password;
-//    private static Connection connection = null;
-//
-//    /**
-//     * Constructeur avec paramètre pour faire la connection
-//     *
-//     * @param url
-//     * @param username
-//     * @param password
-//     */
-//    public CommandeDAO(String url, String username, String password) {
-//        this.url = url;
-//        this.username = username;
-//        this.password = password;
-//    }
-
     /**
      * Permet d'insérer un enregistrement dans la BD d'une commande
      *
@@ -144,6 +128,11 @@ public class CommandeDAO implements ICommon {
         }
     }
 
+    /**
+     * Permet de Faire une requête dans la base de donnée pour la question 5
+     * @param objet
+     * @param i
+     */
     @Override
     public void selectDonnee(Object objet, int i) {
         if (i == 5) {

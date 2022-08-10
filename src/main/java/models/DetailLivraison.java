@@ -1,15 +1,29 @@
 package models;
 
+/**
+ * Clase POJO pur detail livraison
+ *  * @author Francis Lafontaine
+ *  * @since 9 Aôut 2022
+ */
 public class DetailLivraison {
-
     private int noLivraison;
     private int noCommande;
     private int noArticle;
     private int quantiteLivree;
 
+    /**
+     * constructeur vide pour detail livraison
+     */
     public DetailLivraison() {
     }
 
+    /**
+     * Constructeur avec paramèetre pour detail Livraison
+     * @param noLivraison
+     * @param noCommande
+     * @param noArticle
+     * @param quantiteLivree
+     */
     public DetailLivraison(int noLivraison, int noCommande, int noArticle, int quantiteLivree) {
         this.noLivraison = noLivraison;
         this.noCommande = noCommande;
@@ -49,6 +63,10 @@ public class DetailLivraison {
         this.quantiteLivree = quantiteLivree;
     }
 
+    /**
+     * Le TOString de Detail Livraison
+     * @return
+     */
     @Override
     public String toString() {
         return "DetailLivraison{" +

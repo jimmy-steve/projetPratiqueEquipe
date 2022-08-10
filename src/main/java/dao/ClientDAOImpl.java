@@ -9,29 +9,15 @@ import java.sql.*;
  * @since 04/aout/2022
  */
 public class ClientDAOImpl implements ICommon {
-
     private static Connection connection;
 
+    /**
+     * Constructeur avec une connection pour persister les données
+     * @param connection
+     */
     public ClientDAOImpl(Connection connection) {
         this.connection = connection;
     }
-
-//    private String url;
-//    private String username;
-//    private String password;
-//    private static Connection connection = null;
-//
-//    /**
-//     * Constructeur avec paramèetre pour faire la connection
-//     * @param url
-//     * @param username
-//     * @param password
-//     */
-//    public ClientDAOImpl(String url, String username, String password) {
-//        this.url = url;
-//        this.username = username;
-//        this.password = password;
-//    }
 
     /**
      * Permet d'insérer un enregistrement dans la BD d'un client
