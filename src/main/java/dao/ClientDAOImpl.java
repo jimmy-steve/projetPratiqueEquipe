@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 /**
  * Classe qui Implémente L'interface commune ICommon pour le client
+ * Permet de persister les données pour les clients
+ *
  * @author Francis Lafontaine
  * @since 04/aout/2022
  */
@@ -18,6 +20,7 @@ public class ClientDAOImpl implements ICommon {
 
     /**
      * Constructeur avec une connection pour persister les données
+     *
      * @param connection
      */
     public ClientDAOImpl(Connection connection) {
@@ -73,9 +76,16 @@ public class ClientDAOImpl implements ICommon {
         }
     }
 
+    /**
+     * Fonction qui permet de préparer la requête pour l'affichage de tous les client
+     *
+     * @param client
+     * @return une ArrayList de client
+     * @throws SQLException
+     */
     public static ArrayList<Client> afficherListeClient(Client client) throws SQLException {
         try {
-            System.out.println("\n- Voici LA LISTE DE TOUS VOS CLIENT  \n");
+            System.out.println("\n--------------------- Voici LA LISTE DE TOUS VOS CLIENT---------------\n");
             String query = "SELECT * FROM CLIENT;";
 
             PreparedStatement pr = connection.prepareStatement(query);
@@ -90,21 +100,13 @@ public class ClientDAOImpl implements ICommon {
                 listeClients.add(client);
 
 
-                System.out.printf("\nNuméro du client :%d, \nLe nom du client : %s\nLe numéro de téléphone : %s\n", noClient,nomClient, noTelephone);
+                System.out.printf("\nNuméro du client :%d, \nLe nom du client : %s\nLe numéro de téléphone : %s\n", noClient, nomClient, noTelephone);
             }
             pr.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return listeClients;
-    }
-
-    private void listerClients(){
-
-        for (Client client : listeClients
-             ) {
-            System.out.println(client);
-        }
     }
 
     /**
@@ -135,9 +137,6 @@ public class ClientDAOImpl implements ICommon {
             e.printStackTrace();
         }
     }
-
-
-
 
     /**
      * Permet de Sauvegardé la donné dans la base de donnée
@@ -170,6 +169,7 @@ public class ClientDAOImpl implements ICommon {
     /**
      * Permet de faire une requête dans la base donnée qui permet de répondre à la question 6
      * on ajoute un compteur pour permettre le passe d'un paramètre qui nous redirigeration par la suite
+     * Permet aussi de réponde a plsusieurs information pour afficher la lis de tous les clients
      *
      * @param objet
      * @param i
@@ -179,6 +179,13 @@ public class ClientDAOImpl implements ICommon {
         if (i == 6) {
             try {
                 selectQuestion6((Client) objet);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (i == 7) {
+            try {
+                afficherListeClient((Client) objet);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

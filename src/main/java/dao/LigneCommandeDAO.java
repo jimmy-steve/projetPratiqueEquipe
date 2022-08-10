@@ -7,7 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- * Classe Ligne Commande
+ * Classe Ligne CommandeDAO
+ * Permet de persister les données pour les lignes de commandes
  * @author Francis Lafontaine
  */
 public class LigneCommandeDAO implements ICommon{

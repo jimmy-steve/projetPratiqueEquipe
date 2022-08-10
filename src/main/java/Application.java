@@ -5,7 +5,16 @@ import models.*;
 
 import java.sql.Connection;
 
+/**
+ * Mon application qui permet d'insérer des clients et des articles dans la base de donnée
+ *
+ * @author Francis Lafontaine,Erick Solis Bedon, Gabriel Gagnon
+ */
 public class Application {
+    /**
+     * La Classe Main permet de tester nos insertions et nos requêtes
+     * @param args
+     */
     public static void main(String[] args) {
         //------------------------------------------voici le singleTon pour la connection
         Connection connectionSingle = MaConnection.getInstance();
@@ -18,7 +27,7 @@ public class Application {
 
         //------------------------------------------------------------------ajout d'un article
 
-        Article article = new Article(100, "Vinagrier", 50.99, 25);
+        Article article = new Article(100, "Vinaigrier", 50.99, 25);
         ICommon iArticleDAO = new ArticleDAO(connectionSingle);
         iArticleDAO.saveDonnee(article);
         System.out.println(article);
@@ -47,10 +56,10 @@ public class Application {
         //-----------------------------------------------------------------------ajout d'une ligne de detail livraison
 
 
-            DetailLivraison detailLivraison = new DetailLivraison(107, 1, 10, 3);
-            ICommon iDetailLivraisonDao = new DetailLivraisonDAO(connectionSingle);
-            iDetailLivraisonDao.saveDonnee(detailLivraison);
-            System.out.println(detailLivraison);
+        DetailLivraison detailLivraison = new DetailLivraison(107, 1, 10, 3);
+        ICommon iDetailLivraisonDao = new DetailLivraisonDAO(connectionSingle);
+        iDetailLivraisonDao.saveDonnee(detailLivraison);
+        System.out.println(detailLivraison);
         //-----------------------------------------------------------------------Select
         /**
          * Important pour compter les question et avoir la bonne sortie
@@ -93,9 +102,14 @@ public class Application {
         Client clientQ6 = new Client();
         iClientDaoQ6.selectDonnee(clientQ6, cpt);
 
+//-----------------------------------------------------------------------Affichage de tous les client
+        cpt = 7;
+        Client clientQ7 = new Client();
+        ICommon iClientDaoQ7 = new ClientDAOImpl(connectionSingle);
+        iClientDaoQ7.selectDonnee(clientQ7, cpt);
+
+
         //-----------------------------------------------------------------------Déconnexion
-
-
         MaConnection.seDeconnecter();
 
 

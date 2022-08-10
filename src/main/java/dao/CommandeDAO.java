@@ -6,6 +6,7 @@ import java.sql.*;
 
 /**
  * Classe qui Implémente L'interface commune ICommon pour a commande
+ * Permet de persister les données pour les commandes
  *
  * @author Francis Lafontaine
  * @since 04/aout/2022
@@ -15,11 +16,13 @@ public class CommandeDAO implements ICommon {
 
     /**
      * Constructeur avec une connection pour persister les données
+     *
      * @param connection
      */
     public CommandeDAO(Connection connection) {
         this.connection = connection;
     }
+
     /**
      * Permet d'insérer un enregistrement dans la BD d'une commande
      *
@@ -130,6 +133,7 @@ public class CommandeDAO implements ICommon {
 
     /**
      * Permet de Faire une requête dans la base de donnée pour la question 5
+     *
      * @param objet
      * @param i
      */

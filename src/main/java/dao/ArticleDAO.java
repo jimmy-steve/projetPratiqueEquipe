@@ -6,18 +6,23 @@ import java.sql.*;
 
 /**
  * Classe qui Implémente L'interface commune ICommon pour l'article
+ * Permet de persister les données pour les articles
+ *
  * @author Francis Lafontaine
  * @since 04/aout/2022
  */
 public class ArticleDAO implements ICommon {
     private static Connection connection;
+
     /**
      * Constructeur avec paramètre avec une connection
+     *
      * @param connection
      */
     public ArticleDAO(Connection connection) {
         this.connection = connection;
     }
+
     /**
      * Permet de préparer la requête pour insérer un article
      *
@@ -71,6 +76,7 @@ public class ArticleDAO implements ICommon {
     /**
      * Permet de Préparer la requête qui va répondre à la question 4
      * 4. Les Articles dont le prix est supérieur à la moyenne.
+     *
      * @param objet
      */
     private void selectQuestion4(Article objet) {
@@ -112,7 +118,7 @@ public class ArticleDAO implements ICommon {
      */
     @Override
     public void selectDonnee(Object objet) {
-            selectQuestion3((Article) objet);
+        selectQuestion3((Article) objet);
     }
 
     /**
@@ -120,12 +126,12 @@ public class ArticleDAO implements ICommon {
      * on ajoute un compteur pour permettre le passe d'un paramètre qui nous redirigeration par la suite
      *
      * @param objet qui sera caster en article
-     * @param i un compteur
+     * @param i     un compteur
      */
     @Override
     public void selectDonnee(Object objet, int i) {
         if (i == 4) {
-                selectQuestion4((Article) objet);
+            selectQuestion4((Article) objet);
         }
     }
 }

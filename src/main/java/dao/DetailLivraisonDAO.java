@@ -5,8 +5,10 @@ import models.DetailLivraison;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
 /**
  * Classe qui Implémente L'interface commune ICommon pour a detail livraison
+ * Permet de persister les données pour les details Livraisons
  *
  * @author Francis Lafontaine
  * @since 09/aout/2022
@@ -16,6 +18,7 @@ public class DetailLivraisonDAO implements ICommon {
 
     /**
      * Constructeur avec une connection pour persister les données
+     *
      * @param connection
      */
     public DetailLivraisonDAO(Connection connection) {
@@ -23,8 +26,8 @@ public class DetailLivraisonDAO implements ICommon {
     }
 
     /**
-     *
      * Permet de Sauvegardé la donné dans la base de donnée
+     *
      * @param objet
      */
     @Override
@@ -43,7 +46,8 @@ public class DetailLivraisonDAO implements ICommon {
     }
 
     /**
-     *  Permet d'insérer un enregistrement dans la BD d'une detail_commande
+     * Permet d'insérer un enregistrement dans la BD d'une detail_commande
+     *
      * @param detailLivraison
      */
     private void insererDetailLivraison(DetailLivraison detailLivraison) {
