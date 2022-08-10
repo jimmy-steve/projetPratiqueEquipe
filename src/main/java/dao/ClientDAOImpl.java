@@ -3,6 +3,8 @@ package dao;
 import models.Client;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 /**
  * Classe qui Implémente L'interface commune ICommon pour le client
  * @author Francis Lafontaine
@@ -10,6 +12,9 @@ import java.sql.*;
  */
 public class ClientDAOImpl implements ICommon {
     private static Connection connection;
+
+    private static ArrayList<Client> listeClients = new ArrayList<>();
+    private Client client = null;
 
     /**
      * Constructeur avec une connection pour persister les données
@@ -57,11 +62,48 @@ public class ClientDAOImpl implements ICommon {
                 String noTelephone = resultSet.getString(2);
                 int noCommande = resultSet.getInt(3);
                 String dateCommande = resultSet.getString(4);
+
+
                 System.out.printf("\nNuméro du client :%d, \nLe numéro de téléphone : %s\nLe numéro de la commande : %d\nLa date de la commande : %s\n", noClient, noTelephone, noCommande, dateCommande);
+
             }
             pr.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static ArrayList<Client> afficherListeClient(Client client) throws SQLException {
+        try {
+            System.out.println("\n- Voici LA LISTE DE TOUS VOS CLIENT  \n");
+            String query = "SELECT * FROM CLIENT;";
+
+            PreparedStatement pr = connection.prepareStatement(query);
+            ResultSet resultSet = pr.executeQuery();
+            while (resultSet.next()) {
+                int noClient = resultSet.getInt(1);
+                String nomClient = resultSet.getString(2);
+                String noTelephone = resultSet.getString(3);
+
+                client = new Client(noClient, nomClient, noTelephone);
+
+                listeClients.add(client);
+
+
+                System.out.printf("\nNuméro du client :%d, \nLe nom du client : %s\nLe numéro de téléphone : %s\n", noClient,nomClient, noTelephone);
+            }
+            pr.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listeClients;
+    }
+
+    private void listerClients(){
+
+        for (Client client : listeClients
+             ) {
+            System.out.println(client);
         }
     }
 
@@ -93,6 +135,9 @@ public class ClientDAOImpl implements ICommon {
             e.printStackTrace();
         }
     }
+
+
+
 
     /**
      * Permet de Sauvegardé la donné dans la base de donnée
