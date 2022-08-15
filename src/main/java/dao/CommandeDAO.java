@@ -8,7 +8,7 @@ import java.sql.*;
  * Classe qui Implémente L'interface commune ICommon pour a commande
  * Permet de persister les données pour les commandes
  *
- * @author Francis Lafontaine
+ * @author Francis Lafontaine,Erick Solis Bedon, Gabriel Gagnon
  * @since 04/aout/2022
  */
 public class CommandeDAO implements ICommon {

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 /**
  * Nom de la classe : Maconnection
- *
+ * Permet d,avoir une seul instance de connection
  * @author Francis Lafontaine
  * @since 10 aout 2022
  */
@@ -31,7 +31,7 @@ public class MaConnection {
     /**
      * Permet de getter la connection
      *
-     * @return
+     * @return une nouvelle connection juste si yen n'a pas déja une
      */
     public static Connection getInstance() {
         if (connect == null) {

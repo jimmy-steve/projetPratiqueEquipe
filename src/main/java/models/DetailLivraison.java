@@ -2,7 +2,7 @@ package models;
 
 /**
  * Clase POJO pur detail livraison
- *  * @author Francis Lafontaine
+ * @author Gabriel Gagnon
  *  * @since 9 Aôut 2022
  */
 public class DetailLivraison {

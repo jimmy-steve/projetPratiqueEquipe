@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Classe qui Implémente L'interface commune ICommon pour le client
  * Permet de persister les données pour les clients
  *
- * @author Francis Lafontaine
+ * @author Francis Lafontaine,Erick Solis Bedon, Gabriel Gagnon
  * @since 04/aout/2022
  */
 public class ClientDAOImpl implements ICommon {

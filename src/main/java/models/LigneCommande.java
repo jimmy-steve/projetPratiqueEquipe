@@ -2,6 +2,7 @@ package models;
 
 /**
  * Classe POJO Ligne commande
+ * @author Erick Solis Bedon
  */
 public class LigneCommande {
     private int noCommande;

@@ -2,7 +2,7 @@ package models;
 
 /**
  * Classe POJO de LIvraison
- * @author Francis Lafontaine
+ * @author Gabriel Gagnon
  * @since 9 Aôut 2022
  */
 public class Livraison {

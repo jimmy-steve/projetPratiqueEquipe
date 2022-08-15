@@ -9,7 +9,7 @@ import java.sql.SQLException;
 /**
  * Classe Ligne CommandeDAO
  * Permet de persister les données pour les lignes de commandes
- * @author Francis Lafontaine
+ * @author Francis Lafontaine,Erick Solis Bedon, Gabriel Gagnon
  */
 public class LigneCommandeDAO implements ICommon{
     private static Connection connection;

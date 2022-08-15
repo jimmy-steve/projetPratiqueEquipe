@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * Classe qui Implémente L'interface commune ICommon pour a detail livraison
  * Permet de persister les données pour les details Livraisons
  *
- * @author Francis Lafontaine
+ * @author Francis Lafontaine,Erick Solis Bedon, Gabriel Gagnon
  * @since 09/aout/2022
  */
 public class DetailLivraisonDAO implements ICommon {

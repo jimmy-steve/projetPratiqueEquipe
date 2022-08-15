@@ -2,7 +2,7 @@ package models;
 
 /**
  * Classe POJO Commande
- * @author Francis Lafontaine
+ * @author Erick Solis Bedon
  * @since 9 Aôut 2022
  */
 public class Commande {

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 /**
  * Classe de la livraison DAO
  * Permet de persister les données pour les livraisons
- * @author Francis LAfontaine
+ * @author Francis Lafontaine,Erick Solis Bedon, Gabriel Gagnon
  * @since 9 aout 2022
  */
 public class LivraisonDAO implements ICommon{
