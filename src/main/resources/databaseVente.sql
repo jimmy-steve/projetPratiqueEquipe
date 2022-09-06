@@ -33,7 +33,7 @@ CONSTRAINT article_no_article_pk PRIMARY KEY (no_article)
  
   select * from commande;
   
-  create table ligne_commande(
+  create table lignecommande(
   no_commande INTEGER,
   no_article INTEGER,
   quantite integer not null check ( quantite > 0),
@@ -53,7 +53,7 @@ CONSTRAINT article_no_article_pk PRIMARY KEY (no_article)
  
  select * from livraison;
  
- create table detail_livraison(
+ create table detaillivraison(
  no_livraison integer,
  no_commande INTEGER,
  no_article INTEGER,
@@ -64,6 +64,6 @@ CONSTRAINT article_no_article_pk PRIMARY KEY (no_article)
  constraint detail_livraison_no_article_fk foreign key (no_article) references article(no_article)
  );
  
- select * from detail_livraison;
+ select * from detaillivraison;
  
  

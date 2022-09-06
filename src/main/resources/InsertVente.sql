@@ -44,7 +44,7 @@ VALUES
 
 
 
-INSERT INTO ligne_commande (no_commande, no_article, quantite)
+INSERT INTO lignecommande (no_commande, no_article, quantite)
 VALUES
 (1, 10, 10),
 (1, 70, 5),
@@ -80,7 +80,7 @@ VALUES
 
 
 
-INSERT INTO detail_livraison (no_livraison, no_commande, no_article, quantite_livrer)
+INSERT INTO detaillivraison (no_livraison, no_commande, no_article, quantite_livrer)
 VALUES
 (100, 1, 10, 7),
 (100, 1, 70, 5),

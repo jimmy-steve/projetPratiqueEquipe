@@ -53,7 +53,7 @@ public class DetailLivraisonDAO implements ICommon {
     private void insererDetailLivraison(DetailLivraison detailLivraison) {
         try {
             System.out.println("Insertion effectuée...");
-            String query = "INSERT INTO detail_livraison (no_livraison, no_commande, no_article, quantite_livrer) values (?, ?, ?, ?)";
+            String query = "INSERT INTO detaillivraison (no_livraison, no_commande, no_article, quantite_livrer) values (?, ?, ?, ?)";
             PreparedStatement pr = connection.prepareStatement(query);
 
             pr.setInt(1, detailLivraison.getNoLivraison());

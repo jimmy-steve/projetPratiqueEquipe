@@ -85,8 +85,8 @@ public class CommandeDAO implements ICommon {
         try {
             System.out.println("\n- Voici le résultat de la question 5 ! La liste des noCommande avec noLivraison \n ");
             String query = "select c.no_commande,liv.no_livraison\n" +
-                    "from commande c JOIN ligne_commande l ON (c.no_commande = l.no_commande)\n" +
-                    "\t\t\t\tJOIN detail_livraison d ON (l.no_commande = d.no_commande)\n" +
+                    "from commande c JOIN lignecommande l ON (c.no_commande = l.no_commande)\n" +
+                    "\t\t\t\tJOIN detaillivraison d ON (l.no_commande = d.no_commande)\n" +
                     "                JOIN livraison liv ON (d.no_livraison = liv.no_livraison)             \n" +
                     "group by c.no_commande ;";
 

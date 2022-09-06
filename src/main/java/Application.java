@@ -4,6 +4,8 @@ import dao.*;
 import models.*;
 
 import java.sql.Connection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Mon application qui permet d'insérer des clients et des articles dans la base de donnée
@@ -16,15 +18,19 @@ public class Application {
      * @param args
      */
     public static void main(String[] args) {
+        Set<Client> listeClients = new HashSet<>();
         //------------------------------------------voici le singleTon pour la connection
         Connection connectionSingle = MaConnection.getInstance();
         //-----------------------------------------------------------------ajout d'un client
 
-        Client client = new Client(91, "Michel Mambara", ("(450)582-2459"));
+        Client client = new Client(90, "Michel Mambara", ("(450)582-2459"));
         ICommon iClientDao = new ClientDAOImpl(connectionSingle);
         iClientDao.saveDonnee(client);
-        System.out.println(client);
-
+        listeClients.add(client);
+        for (Client tmp : listeClients
+             ) {
+            System.out.println(tmp);
+        }
         //------------------------------------------------------------------ajout d'un article
 
         Article article = new Article(100, "Vinaigrier", 50.99, 25);

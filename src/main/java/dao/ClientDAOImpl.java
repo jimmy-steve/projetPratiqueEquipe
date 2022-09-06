@@ -100,7 +100,7 @@ public class ClientDAOImpl implements ICommon {
                 listeClients.add(client);
 
 
-                System.out.printf("\nNuméro du client :%d, \nLe nom du client : %s\nLe numéro de téléphone : %s\n", noClient, nomClient, noTelephone);
+                //System.out.printf("\nNuméro du client :%d, \nLe nom du client : %s\nLe numéro de téléphone : %s\n", noClient, nomClient, noTelephone);
             }
             pr.close();
         } catch (SQLException e) {

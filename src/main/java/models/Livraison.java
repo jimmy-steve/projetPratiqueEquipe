@@ -8,6 +8,10 @@ package models;
 public class Livraison {
     private int noLivraison;
     private String dateLivraison;
+    /**
+     * Une livraison possèdent un détail de livraison
+     */
+    private DetailLivraison detailLivraison;
 
     /**
      * constructeur vide de livraison
@@ -24,6 +28,26 @@ public class Livraison {
     public Livraison(int noLivraison, String dateLivraison) {
         this.noLivraison = noLivraison;
         this.dateLivraison = dateLivraison;
+    }
+
+    /**
+     * Constructeur avec paramètre et l'objet detail livraison
+     * @param noLivraison
+     * @param dateLivraison
+     * @param detailLivraison
+     */
+    public Livraison(int noLivraison, String dateLivraison, DetailLivraison detailLivraison) {
+        this.noLivraison = noLivraison;
+        this.dateLivraison = dateLivraison;
+        this.detailLivraison = detailLivraison;
+    }
+
+    public DetailLivraison getDetailLivraison() {
+        return detailLivraison;
+    }
+
+    public void setDetailLivraison(DetailLivraison detailLivraison) {
+        this.detailLivraison = detailLivraison;
     }
 
     public int getNoLivraison() {
@@ -43,7 +67,7 @@ public class Livraison {
     }
 
     /**
-     * Le Tostring de lIVRAISON
+     *  Le Tostring de lIVRAISON
      * @return
      */
     @Override
@@ -51,6 +75,7 @@ public class Livraison {
         return "Livraison{" +
                 "noLivraison=" + noLivraison +
                 ", dateLivraison='" + dateLivraison + '\'' +
+                ", detailLivraison=" + detailLivraison +
                 '}';
     }
 }

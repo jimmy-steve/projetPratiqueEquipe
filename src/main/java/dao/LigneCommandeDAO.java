@@ -30,7 +30,7 @@ public class LigneCommandeDAO implements ICommon{
     public static void insererLigneCommande(LigneCommande ligneCommande ) throws SQLException {
         try {
             System.out.println("Insertion effectuée...");
-            String query = "INSERT INTO ligne_commande (no_commande, no_article, quantite) values (?, ?, ?)";
+            String query = "INSERT INTO lignecommande (no_commande, no_article, quantite) values (?, ?, ?)";
             PreparedStatement pr = connection.prepareStatement(query);
 
             pr.setInt(1,ligneCommande.getNoCommande());
@@ -58,7 +58,6 @@ public class LigneCommandeDAO implements ICommon{
 
     @Override
     public void selectDonnee(Object objet) {
-
     }
 
     @Override
